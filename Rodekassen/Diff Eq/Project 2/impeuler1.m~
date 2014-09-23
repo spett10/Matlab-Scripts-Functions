@@ -1,0 +1,14 @@
+function [t,y] = impeuler1(f,y0,t0,h,n)
+%improved euler 
+t=t0;
+y=y0;
+
+antalskridt=h*n;
+
+for j=1:h:antalskridt+1
+    k1=f(t,y);
+    y=y+((k1+f(t+h,y+h*k1))/2)*;
+    t=t+h;
+end 
+    
+end

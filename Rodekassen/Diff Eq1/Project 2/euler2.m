@@ -1,0 +1,33 @@
+function [] = euler2(f,g,x0,y0,t0,h,n)
+%euler på et ligningssystem af 2 differentialligninger
+%opgave 1 side 201, implementering af side 198.
+
+t=t0;
+y=y0;
+x=x0;
+
+antalskridt=h*n;
+
+tabel=zeros(3,n);
+tabel(:,1)=[t0;x0;y0];
+
+i=2;
+
+for j=1:h:antalskridt+1
+    k1=f(t,x,y);
+    k2=g(t,x,y);
+    x=x+h*k1;
+    y=y+h*k2;
+    %forbedret euler er således:
+    %x=x+((k2+f(t+h,x+h*k2,y+h*k1))/2)*h;
+    %y=y+((k1+g(t+h,x+h*k2,y+h*k1))/2)*h;
+    t=t+h;
+    tabel(3,i)=y;
+    tabel(2,i)=x;
+    tabel(1,i)=t;
+    i=i+1;
+end
+    tabel
+
+end
+
