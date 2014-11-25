@@ -1,0 +1,19 @@
+function [] = dimensionalityTest(trainDigits, trainLabels, testDigits, testLabels, dim)
+%DIMENSIONALITYTEST Summary of this function goes here
+%   Detailed explanation goes here
+
+% inspired by
+% http://matlabdatamining.blogspot.dk/2010/02/principal-components-analysis.html
+
+[coeff, score] = princomp(zscore(trainDigits));
+trainDigitsReducedDim = score(:, 1:dim);
+testNewBasis = testDigits(
+
+
+reconstructed = (SCORE * COEFF') .* repmat(AStd,[n 1]) + repmat(AMean,[n 1]);
+imshow(reshape(reconstructed(1,:),28,28));
+pause
+imshow(reshape(A(1,:),28,28));
+
+end
+

@@ -1,0 +1,14 @@
+function [argmin] = logRun(X, y, theta)
+max = 100000;
+N = length(y);
+wt = zeros(N, 1);
+step = 0.1;
+% find global minimum
+for t=1:max
+   [Ein, dEin] = logCost(X,y theta);
+   stepD = step*norm(dEin);
+   s = wt*X;
+   thetaS = 
+   theta = theta + stepD * dEin;
+end
+

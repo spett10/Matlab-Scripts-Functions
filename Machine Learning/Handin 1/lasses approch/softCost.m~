@@ -1,0 +1,24 @@
+function [ Ein, dEin ] = softCost(X, y, theta)
+    N = length(y(:,1));
+    Ein = 0;
+    for t=1:N
+        for j=1:K
+            if y(t,j) == 1
+                Ein = Ein + log(softmaxLasse(x*theta',j));
+            end
+        end
+    end
+    dEin = X'
+end
+
+function [lasse] = softmaxLasse(x,j)
+    c = max(x);
+    k = 0;
+    sum = 0;
+    for i=1:10
+        sum = sum + exp(x(i)-c;
+    end
+    lasse = exp(x(j)-c + log(sum));
+end
+    
+    

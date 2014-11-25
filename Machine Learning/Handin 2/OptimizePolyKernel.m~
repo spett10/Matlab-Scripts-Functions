@@ -1,0 +1,36 @@
+function [ model, bestAcc, contour] = OptimizePolyKernel(data, cost)
+%Grid searches for the best poly kernel
+%data = to train on
+%cost = the cost of a vector be on the otherside of the line
+
+n = len(data.au_train_labels);
+
+bestC = 0;
+bestGamma = 0;
+bestAcc = 0;
+
+% prepares contour plot
+x=0,
+y=0;
+contour = struct('X', zeros(n,1), 'Y', zeros(n,1), '
+
+for Cexp=-5:5
+    for gammaExp=-15:3
+        C = 2^Cexp;
+        gamma = 2^gammaExp;
+        libsvm_options = sprintf('-s 0 -t 1 -c %f -v 2 -g %f -r %f', cost, gamma, C)
+        acc = svmtrain(data.au_train_labels, data.au_train_digits, libsvm_options);
+        
+        if acc > bestAcc
+            bestAcc = acc;
+            bestGamma = gamma;
+            bestC = C;
+        end
+    end
+end
+
+%Produce model for best parameters
+libsvm_options = sprintf('-s 0 -t 1 -c %f -g %f -r %f', cost, bestGamma, bestC);
+model = svmtrain(data.au_train_labels, data.au_train_digits, libsvm_options);
+end
+

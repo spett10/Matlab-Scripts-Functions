@@ -1,0 +1,10 @@
+state1 = fromAnnoToStates(genomes.genome1,genomes.anno1);
+save('state1');
+state2 = fromAnnoToStates(genomes.genome2,genomes.anno2);
+save('state2');
+state3 = fromAnnoToStates(genomes.genome3,genomes.anno3);
+save('state3');
+state4 = fromAnnoToStates(genomes.genome4,genomes.anno4);
+save('state4');
+state5 = fromAnnoToStates(genomes.genome5,genomes.anno5);
+save('state5');
